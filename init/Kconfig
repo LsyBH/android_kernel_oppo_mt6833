@@ -60,7 +60,6 @@ config INIT_ENV_ARG_LIMIT
 	  Maximum of each of the number of arguments and environment
 	  variables passed to init from the kernel command line.
 
-
 config CROSS_COMPILE
 	string "Cross-compiler tool prefix"
 	help
@@ -256,7 +255,6 @@ config SYSVIPC_SYSCTL
 	depends on SYSVIPC
 	depends on SYSCTL
 	default y
-
 config POSIX_MQUEUE
 	bool "POSIX Message Queues"
 	depends on NET
@@ -525,7 +523,6 @@ config PSI_DEFAULT_DISABLED
 	  Say N if unsure.
 
 endmenu # "CPU/Task time and stats accounting"
-
 source "kernel/rcu/Kconfig"
 
 config BUILD_BIN2C
@@ -707,10 +704,11 @@ config NONLINEAR_FREQ_CTL
 	  If unsure, say N.
 
 #ifdef OPLUS_FEATURE_SCHED_ASSIST
-source "kernel/sched_assist/Kconfig"
+config SCHED_ASSIST
+	bool "Sched Assist (Placeholder)"
+	default y
 #endif
 endmenu
-
 menu "FAIR Scheuler tunables"
 
 choice
@@ -913,7 +911,6 @@ config RT_GROUP_SCHED
 	  See Documentation/scheduler/sched-rt-group.txt for more information.
 
 endif #CGROUP_SCHED
-
 config UCLAMP_TASK_GROUP
 	bool "Utilization clamping per group of tasks"
 	depends on CGROUP_SCHED
@@ -1128,7 +1125,6 @@ config NET_NS
 	  of the network stack.
 
 endif # NAMESPACES
-
 config SCHED_AUTOGROUP
 	bool "Automatic process group scheduling"
 	select CGROUPS
@@ -1266,7 +1262,6 @@ config CC_OPTIMIZE_FOR_SIZE
 	  If unsure, say N.
 
 endchoice
-
 config SYSCTL
 	bool
 
@@ -1465,7 +1460,6 @@ config ELF_CORE
 	bool "Enable ELF core dumps" if EXPERT
 	help
 	  Enable support for generating core dumps. Disabling saves about 4k.
-
 
 config PCSPKR_PLATFORM
 	bool "Enable PC-Speaker support" if EXPERT
